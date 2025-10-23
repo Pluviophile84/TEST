@@ -1,6 +1,6 @@
 'use client' // Enables client-side interactivity
 
-import Image from 'next/image' // <-- Re-added Image import
+import Image from 'next/image'
 import { useState } from 'react'
 
 /* SVG Icon Components */
@@ -62,7 +62,7 @@ export default function Home() {
       <main className="flex w-full max-w-5xl flex-col">
         {/* === HEADER === */}
         <header className="flex w-full items-center justify-between py-4">
-          {/* Logo - Restored Image Component */}
+          {/* Logo */}
           <div className="flex items-center gap-2">
             <Image
               src="/logo.png" // Replace with your logo filename
@@ -73,15 +73,9 @@ export default function Home() {
             />
           </div>
 
-          {/* Social Links */}
+          {/* Social Links - ONLY Buy Button Remains */}
           <nav className="flex items-center gap-2 sm:gap-4">
-            <a href="https://x.com/your-twitter" target="_blank" className="rounded-lg p-2 text-light-400 transition hover:bg-dark-900 hover:text-light-100" aria-label="X (Twitter)">
-              <IconTwitter className="w-5 h-5" />
-            </a>
-            <a href="https://t.me/your-telegram" target="_blank" className="rounded-lg p-2 text-light-400 transition hover:bg-dark-900 hover:text-light-100" aria-label="Telegram">
-              <IconSend className="w-5 h-5" />
-            </a>
-            {/* Gradient Button in Header */}
+            {/* Twitter and Telegram Icons REMOVED */}
             <a href="#" target="_blank" rel="noopener noreferrer" className="group rounded-lg p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse">
               <span className="flex h-full w-full items-center justify-center gap-1.5 rounded-md px-4 py-2 text-sm font-semibold bg-dark-900 text-light-100 transition-all duration-300 group-hover:bg-transparent group-hover:text-black">
                 Buy Now
@@ -121,13 +115,12 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     0x...EVM...ADDRESS...HERE
                   </p>
-                  {/* UPDATED COPY BUTTON */}
+                  {/* UPDATED BORDERLESS COPY BUTTON */}
                   <button
                     onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
-                    className={`flex w-full items-center justify-center gap-2 rounded-lg border border-dark-900 bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:border-light-400`}
+                    className={`flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Removed border classes
                   >
                     {copiedAddress === 'evm' ? (
-                      // Apply gradient animation to text and icon
                       <span className="flex items-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse">
                         <IconCheck className="w-4 h-4" /> Copied!
                       </span>
@@ -148,13 +141,12 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     So...SOLANA...ADDRESS...HERE
                   </p>
-                   {/* UPDATED COPY BUTTON */}
+                   {/* UPDATED BORDERLESS COPY BUTTON */}
                   <button
                     onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
-                    className={`flex w-full items-center justify-center gap-2 rounded-lg border border-dark-900 bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:border-light-400`}
+                    className={`flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Removed border classes
                   >
                     {copiedAddress === 'sol' ? (
-                      // Apply gradient animation to text and icon
                       <span className="flex items-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse">
                         <IconCheck className="w-4 h-4" /> Copied!
                       </span>
