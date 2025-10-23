@@ -106,7 +106,7 @@ export default function Home() {
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text).then(
       () => {
-        alert('Address copied to clipboard!') // Simple feedback
+        console.log('Address copied to clipboard!'); // Simple feedback
       },
       (err) => {
         console.error('Failed to copy text: ', err)
