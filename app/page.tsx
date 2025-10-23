@@ -1,6 +1,6 @@
 'use client' // Enables client-side interactivity
 
-import Image from 'next/image' // <-- Image import restored
+import Image from 'next/image'
 import { useState } from 'react'
 
 /* SVG Icon Components */
@@ -52,7 +52,7 @@ export default function Home() {
       <main className="flex w-full max-w-5xl flex-col">
         {/* === HEADER === */}
         <header className="flex w-full items-center justify-between py-4">
-          {/* Logo - Image Component Restored */}
+          {/* Logo */}
           <div className="flex items-center gap-2">
             <Image
               src="/logo.png" // Replace with your logo filename
@@ -104,24 +104,23 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     0x...EVM...ADDRESS...HERE
                   </p>
-                  {/* UPDATED COPY BUTTON - Added justify-center */}
+                  {/* --- FINAL COPY BUTTON FIX --- */}
                   <button
                     onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
-                    className={`flex w-28 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Added justify-center
+                    className={`flex w-28 shrink-0 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Use fixed w-28 AND shrink-0
                   >
-                    {/* Inner span now also uses justify-center */}
-                    <span className={`flex w-full items-center justify-center gap-2 ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
-                      {copiedAddress === 'evm' ? (
-                        <>
-                          <IconCheck className="w-4 h-4" /> Copied!
-                        </>
-                      ) : (
-                        <>
-                          <IconCopy className="w-4 h-4" /> Copy
-                        </>
-                      )}
-                    </span>
+                    {/* Inner span structure identical in both states */}
+                    {copiedAddress === 'evm' ? (
+                       <span className={`flex w-full items-center justify-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse`}>
+                        <IconCheck className="w-4 h-4" /> Copied!
+                      </span>
+                    ) : (
+                      <span className="flex w-full items-center justify-center gap-2">
+                        <IconCopy className="w-4 h-4" /> Copy
+                      </span>
+                    )}
                   </button>
+                  {/* --- END FIX --- */}
                 </div>
               </div>
             </div>
@@ -133,24 +132,23 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     So...SOLANA...ADDRESS...HERE
                   </p>
-                   {/* UPDATED COPY BUTTON - Added justify-center */}
+                   {/* --- FINAL COPY BUTTON FIX --- */}
                   <button
                     onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
-                    className={`flex w-28 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Added justify-center
+                    className={`flex w-28 shrink-0 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Use fixed w-28 AND shrink-0
                   >
-                     {/* Inner span now also uses justify-center */}
-                     <span className={`flex w-full items-center justify-center gap-2 ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
-                      {copiedAddress === 'sol' ? (
-                        <>
-                          <IconCheck className="w-4 h-4" /> Copied!
-                        </>
-                      ) : (
-                        <>
-                          <IconCopy className="w-4 h-4" /> Copy
-                        </>
-                      )}
-                    </span>
+                     {/* Inner span structure identical in both states */}
+                     {copiedAddress === 'sol' ? (
+                       <span className={`flex w-full items-center justify-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse`}>
+                        <IconCheck className="w-4 h-4" /> Copied!
+                      </span>
+                    ) : (
+                      <span className="flex w-full items-center justify-center gap-2">
+                        <IconCopy className="w-4 h-4" /> Copy
+                      </span>
+                    )}
                   </button>
+                  {/* --- END FIX --- */}
                 </div>
               </div>
             </div>
