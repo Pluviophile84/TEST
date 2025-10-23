@@ -1,6 +1,6 @@
 'use client' // Enables client-side interactivity
 
-import Image from 'next/image'
+// Reverted import: No Image for now
 import { useState } from 'react'
 
 /* SVG Icon Components */
@@ -52,15 +52,11 @@ export default function Home() {
       <main className="flex w-full max-w-5xl flex-col">
         {/* === HEADER === */}
         <header className="flex w-full items-center justify-between py-4">
-          {/* Logo */}
+          {/* Logo - Reverted to text */}
           <div className="flex items-center gap-2">
-            <Image
-              src="/logo.png" // Replace with your logo filename
-              alt="TONR Logo"
-              width={100} // Adjust width
-              height={30} // Adjust height
-              priority
-            />
+            <span className="text-3xl font-black italic lowercase text-light-100">
+              tonr
+            </span>
           </div>
 
           {/* Social Links */}
@@ -104,20 +100,23 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     0x...EVM...ADDRESS...HERE
                   </p>
-                  {/* UPDATED COPY BUTTON with fixed width */}
+                  {/* UPDATED COPY BUTTON - Fixed Width, Consistent Structure */}
                   <button
                     onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
-                    className={`flex min-w-[7rem] items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Added min-w-[7rem], removed border
+                    className={`flex w-28 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Use fixed w-28 (7rem)
                   >
-                    {copiedAddress === 'evm' ? (
-                      <span className="flex items-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse">
-                        <IconCheck className="w-4 h-4" /> Copied!
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-2"> {/* Added span for consistency */}
-                        <IconCopy className="w-4 h-4" /> Copy
-                      </span>
-                    )}
+                    {/* Ensure span exists in both states */}
+                    <span className={`flex items-center gap-2 ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
+                      {copiedAddress === 'evm' ? (
+                        <>
+                          <IconCheck className="w-4 h-4" /> Copied!
+                        </>
+                      ) : (
+                        <>
+                          <IconCopy className="w-4 h-4" /> Copy
+                        </>
+                      )}
+                    </span>
                   </button>
                 </div>
               </div>
@@ -130,20 +129,23 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     So...SOLANA...ADDRESS...HERE
                   </p>
-                   {/* UPDATED COPY BUTTON with fixed width */}
+                   {/* UPDATED COPY BUTTON - Fixed Width, Consistent Structure */}
                   <button
                     onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
-                    className={`flex min-w-[7rem] items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Added min-w-[7rem], removed border
+                    className={`flex w-28 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Use fixed w-28 (7rem)
                   >
-                    {copiedAddress === 'sol' ? (
-                       <span className="flex items-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse">
-                        <IconCheck className="w-4 h-4" /> Copied!
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-2"> {/* Added span for consistency */}
-                        <IconCopy className="w-4 h-4" /> Copy
-                      </span>
-                    )}
+                     {/* Ensure span exists in both states */}
+                     <span className={`flex items-center gap-2 ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
+                      {copiedAddress === 'sol' ? (
+                        <>
+                          <IconCheck className="w-4 h-4" /> Copied!
+                        </>
+                      ) : (
+                        <>
+                          <IconCopy className="w-4 h-4" /> Copy
+                        </>
+                      )}
+                    </span>
                   </button>
                 </div>
               </div>
