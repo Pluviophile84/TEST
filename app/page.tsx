@@ -194,7 +194,7 @@ export default function Home() {
                 </h3>
                 <p className="mt-2 text-3xl font-bold text-light-100">
                   1,000,000,000
-                </Fp>
+                </p> {/* <--- TYPO WAS HERE. Corrected to </p> */}
               </div>
             </div>
 
@@ -292,7 +292,6 @@ export default function Home() {
           <p className="text-lg text-light-400">
             Join the community. Get the ink. Start printing.
           </p>
-          {/* ^^^ THIS IS THE TYPO. It is now corrected to </p> ^^^ */}
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
             {/* "Buy" Button */}
             <GradientButton href="#">
@@ -301,7 +300,7 @@ export default function Home() {
             </GradientButton>
 
             {/* "X" Button */}
-            <GradientButton href="https.x.com/your-twitter">
+            <GradientButton href="https://x.com/your-twitter">
               <IconTwitter />
               Follow on X
             </GradientButton>
