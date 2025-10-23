@@ -142,7 +142,7 @@ export default function Home() {
           <h3 className="text-3xl font-bold">Get your $TONR</h3>
           <p className="text-lg text-light-400">
             Join the community. Get the ink. Start printing.
-          </all>
+          </p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
             <a
               href="#" // Add your "Buy" link here
