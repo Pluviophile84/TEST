@@ -1,6 +1,6 @@
 'use client' // Enables client-side interactivity for the copy button
 
-import Image from 'next/image' // <-- THIS IS NEW
+import Image from 'next/image' // Import the Next.js Image component
 
 /*
   We define our SVG icons as components here.
@@ -194,7 +194,7 @@ export default function Home() {
                 </h3>
                 <p className="mt-2 text-3xl font-bold text-light-100">
                   1,000,000,000
-                </p>
+                </Fp>
               </div>
             </div>
 
@@ -291,7 +291,8 @@ export default function Home() {
           <h3 className="text-3xl font-bold">Get your $TONR</h3>
           <p className="text-lg text-light-400">
             Join the community. Get the ink. Start printing.
-          </all>
+          </p>
+          {/* ^^^ THIS IS THE TYPO. It is now corrected to </p> ^^^ */}
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
             {/* "Buy" Button */}
             <GradientButton href="#">
