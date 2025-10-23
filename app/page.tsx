@@ -1,5 +1,7 @@
 'use client' // Enables client-side interactivity for the copy button
 
+import Image from 'next/image' // <-- THIS IS NEW
+
 /*
   We define our SVG icons as components here.
   This avoids needing to install any libraries.
@@ -117,11 +119,15 @@ export default function Home() {
       <main className="flex w-full max-w-5xl flex-col">
         {/* === HEADER === */}
         <header className="flex w-full items-center justify-between py-4">
-          {/* Logo */}
+          {/* === LOGO (EDIT THIS) === */}
           <div className="flex items-center gap-2">
-            <span className="text-3xl font-black italic lowercase text-light-100">
-              tonr
-            </span>
+            <Image
+              src="/logo.png" // <-- !!! CHANGE THIS to /your-logo-filename.png
+              alt="TONR Logo"
+              width={100} // <-- Adjust this width to fit your logo
+              height={30} // <-- Adjust this height to fit your logo
+              priority // Makes the logo load fast
+            />
           </div>
 
           {/* Social Links */}
@@ -275,7 +281,6 @@ export default function Home() {
             ink. The essential fuel. Every print, every launch, every new meme
             draws from the <span className="italic">$TONR</span> supply.
           </p>
-          {/* ^^^ THE TYPO WAS HERE. It is now </p> ^^^ */}
           <p className="mt-6 text-lg font-semibold text-light-100">
             Simple. The machine needs its ink.
           </p>
@@ -286,7 +291,7 @@ export default function Home() {
           <h3 className="text-3xl font-bold">Get your $TONR</h3>
           <p className="text-lg text-light-400">
             Join the community. Get the ink. Start printing.
-          </p>
+          </all>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
             {/* "Buy" Button */}
             <GradientButton href="#">
