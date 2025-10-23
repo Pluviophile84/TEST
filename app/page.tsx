@@ -1,3 +1,5 @@
+'use client' // <- This is new: enables client-side interactivity for the copy button
+
 /*
   We define our SVG icons as components here.
   This avoids needing to install any libraries.
@@ -66,37 +68,30 @@ const IconCopy = ({ className = 'w-5 h-5' }: { className?: string }) => (
 )
 
 // === GRADIENT BUTTON COMPONENT ===
-// We make a reusable component for our new button style
 const GradientButton = ({
   href,
   children,
-  isPrimary = false,
+  className = '',
   target = '_blank',
 }: {
   href: string
   children: React.ReactNode
-  isPrimary?: boolean
+  className?: string
   target?: string
 }) => (
   <a
     href={href}
     target={target}
     rel="noopener noreferrer"
-    // This outer 'a' tag is the gradient.
-    // We add padding (p-[2px]) to create the "border"
-    className="group rounded-lg p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse"
+    // The outer 'a' tag is the gradient.
+    className={`group rounded-lg p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse ${className}`}
   >
-    {/* This inner 'span' is the dark background.
+    {/* The inner 'span' is the dark background.
         On hover, we make it transparent to "reveal" the gradient.
     */}
     <span
-      className={`flex h-full w-full items-center justify-center gap-2 rounded-md px-6 py-3 text-lg font-bold transition-all duration-300
-        ${
-          isPrimary
-            ? 'bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse text-black' // Primary button is full gradient
-            : 'bg-dark-900 text-light-100 group-hover:bg-transparent group-hover:text-black' // Border button
-        }
-      `}
+      className={`flex h-full w-full items-center justify-center gap-2 rounded-md px-6 py-3 text-lg font-bold
+       bg-dark-900 text-light-100 transition-all duration-300 group-hover:bg-transparent group-hover:text-black`}
     >
       {children}
     </span>
@@ -105,6 +100,18 @@ const GradientButton = ({
 
 // === MAIN PAGE COMPONENT ===
 export default function Home() {
+  // This new function handles the copy-to-clipboard logic
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text).then(
+      () => {
+        alert('Address copied to clipboard!') // Simple feedback
+      },
+      (err) => {
+        console.error('Failed to copy text: ', err)
+      },
+    )
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center p-6 md:p-12 bg-dark-950 text-light-100">
       <main className="flex w-full max-w-5xl flex-col">
@@ -135,20 +142,28 @@ export default function Home() {
             >
               <IconSend className="w-5 h-5" />
             </a>
-            {/* Simple "Buy Now" button for the header */}
+
+            {/* NEW: Gradient Button in Header */}
             <a
               href="#" // Add your "Buy" link here
-              className="flex items-center gap-1.5 rounded-lg bg-light-100 px-4 py-2 text-sm font-semibold text-dark-950 transition hover:bg-light-200"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-lg p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse"
             >
-              Buy Now
-              <IconArrowUpRight className="w-4 h-4" />
+              <span
+                className="flex h-full w-full items-center justify-center gap-1.5 rounded-md px-4 py-2 text-sm font-semibold
+                 bg-dark-900 text-light-100 transition-all duration-300 group-hover:bg-transparent group-hover:text-black"
+              >
+                Buy Now
+                <IconArrowUpRight className="w-4 h-4" />
+              </span>
             </a>
           </nav>
         </header>
 
         {/* === HERO SECTION === */}
         <section className="flex flex-col items-center justify-center py-24 text-center md:py-40">
-          {/* NEW: Animated Gradient Line */}
+          {/* Animated Gradient Line */}
           <div className="mb-8 h-2 w-full max-w-sm rounded-full bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
 
           <h1 className="mb-6 text-5xl font-extrabold md:text-7xl">
@@ -161,51 +176,82 @@ export default function Home() {
           </p>
         </section>
 
-        {/* === NEW: TOKENOMICS SECTION === */}
+        {/* === TOKENOMICS SECTION (WITH GRADIENT BORDERS) === */}
         <section className="mx-auto w-full max-w-4xl py-12">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {/* Total Supply */}
-            <div className="rounded-lg border border-dark-900 bg-dark-900/50 p-6 text-center">
-              <h3 className="text-sm font-semibold uppercase text-light-400">
-                Total Supply
-              </h3>
-              <p className="mt-2 text-3xl font-bold text-light-100">
-                1,000,000,000
-              </p>
+            {/* Total Supply Box */}
+            <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
+              <div className="h-full w-full rounded-md bg-dark-900 p-6 text-center">
+                <h3 className="text-sm font-semibold uppercase text-light-400">
+                  Total Supply
+                </h3>
+                <p className="mt-2 text-3xl font-bold text-light-100">
+                  1,000,000,000
+                </p>
+              </div>
             </div>
 
-            {/* Taxes */}
-            <div className="rounded-lg border border-dark-900 bg-dark-900/50 p-6 text-center">
-              <h3 className="text-sm font-semibold uppercase text-light-400">
-                Taxes
-              </h3>
-              <p className="mt-2 text-3xl font-bold text-light-100">0% / 0%</p>
+            {/* Taxes Box */}
+            <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
+              <div className="h-full w-full rounded-md bg-dark-900 p-6 text-center">
+                <h3 className="text-sm font-semibold uppercase text-light-400">
+                  Taxes
+                </h3>
+                <p className="mt-2 text-3xl font-bold text-light-100">0% / 0%</p>
+              </div>
             </div>
 
-            {/* Liquidity */}
-            <div className="rounded-lg border border-dark-900 bg-dark-900/50 p-6 text-center">
-              <h3 className="text-sm font-semibold uppercase text-light-400">
-                Liquidity
-              </h3>
-              <p className="mt-2 text-3xl font-bold text-light-100">
-                Locked
-              </p>
+            {/* Liquidity Box */}
+            <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
+              <div className="h-full w-full rounded-md bg-dark-900 p-6 text-center">
+                <h3 className="text-sm font-semibold uppercase text-light-400">
+                  Liquidity
+                </h3>
+                <p className="mt-2 text-3xl font-bold text-light-100">
+                  Locked
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Contract Address */}
-          <div className="mt-4 rounded-lg border border-dark-900 bg-dark-900/50 p-6">
-            <h3 className="text-sm font-semibold uppercase text-light-400">
-              Contract Address
-            </h3>
-            <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row">
-              <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-sm text-light-200 sm:flex-grow">
-                0x0000000000000000000000000000000000000000
-              </p>
-              <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition hover:bg-dark-900/50 sm:w-auto">
-                <IconCopy className="w-4 h-4" />
-                Copy
-              </button>
+          {/* === NEW: DUAL CONTRACT ADDRESSES === */}
+          <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+            {/* EVM Address */}
+            <div className="rounded-lg border border-dark-900 bg-dark-900/50 p-6">
+              <h3 className="text-sm font-semibold uppercase text-light-400">
+                EVM Address (Base, ETH)
+              </h3>
+              <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row">
+                <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-sm text-light-200 sm:flex-grow">
+                  0x...EVM...ADDRESS...HERE
+                </p>
+                <button
+                  onClick={() => handleCopy('0x...EVM...ADDRESS...HERE')}
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition hover:bg-opacity-75 sm:w-auto"
+                >
+                  <IconCopy className="w-4 h-4" />
+                  Copy
+                </button>
+              </div>
+            </div>
+
+            {/* Solana Address */}
+            <div className="rounded-lg border border-dark-900 bg-dark-900/50 p-6">
+              <h3 className="text-sm font-semibold uppercase text-light-400">
+                Solana Address
+              </h3>
+              <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row">
+                <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-sm text-light-200 sm:flex-grow">
+                  So...SOLANA...ADDRESS...HERE
+                </p>
+                <button
+                  onClick={() => handleCopy('So...SOLANA...ADDRESS...HERE')}
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition hover:bg-opacity-75 sm:w-auto"
+                >
+                  <IconCopy className="w-4 h-4" />
+                  Copy
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -229,26 +275,26 @@ export default function Home() {
           </p>
         </section>
 
-        {/* === CTA SECTION (WITH NEW BUTTONS) === */}
+        {/* === CTA SECTION (ALL BUTTONS BORDER-ONLY) === */}
         <section className="flex w-full flex-col items-center justify-center gap-4 pb-24 md:pb-32">
           <h3 className="text-3xl font-bold">Get your $TONR</h3>
           <p className="text-lg text-light-400">
             Join the community. Get the ink. Start printing.
           </p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
-            {/* Primary "Buy" Button */}
-            <GradientButton href="#" isPrimary={true}>
+            {/* "Buy" Button (no longer primary) */}
+            <GradientButton href="#">
               Buy $TONR
               <IconArrowUpRight />
             </GradientButton>
 
-            {/* Secondary "X" Button */}
+            {/* "X" Button */}
             <GradientButton href="https://x.com/your-twitter">
               <IconTwitter />
               Follow on X
             </GradientButton>
 
-            {/* Secondary "Telegram" Button */}
+            {/* "Telegram" Button */}
             <GradientButton href="https://t.me/your-telegram">
               <IconSend />
               Join Telegram
@@ -259,7 +305,7 @@ export default function Home() {
         {/* === FOOTER === */}
         <footer className="flex w-full flex-col items-center justify-between gap-6 border-t border-dark-900 py-8 sm:flex-row">
           <span className="font-semibold text-light-400">$TONR 2025</span>
-          {/* NEW: Animated Gradient Line */}
+          {/* Animated Gradient Line */}
           <div className="h-1.5 w-full max-w-xs rounded-full bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
         </footer>
       </main>
