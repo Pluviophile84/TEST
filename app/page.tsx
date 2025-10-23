@@ -122,7 +122,7 @@ export default function Home() {
           {/* === LOGO (EDIT THIS) === */}
           <div className="flex items-center gap-2">
             <Image
-              src="/logo.png" // <-- !!! CHANGE THIS to /your-logo-filename.png
+              src="/34d864da-76a8-4141-a8db-f531f21afe1b.png" // <-- !!! CHANGE THIS to /your-logo-filename.png
               alt="TONR Logo"
               width={100} // <-- Adjust this width to fit your logo
               height={30} // <-- Adjust this height to fit your logo
