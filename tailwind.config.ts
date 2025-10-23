@@ -27,6 +27,25 @@ const config: Config = {
           400: '#94a3b8', // slate-400
         },
       },
+      // === NEW STUFF STARTS HERE ===
+      backgroundImage: {
+        // We define our looping gradient here so we can reuse it
+        'tonr-gradient':
+          'linear-gradient(to right, #22d3ee, #ec4899, #facc15, #ec4899, #22d3ee)',
+      },
+      // We define the animation keyframes
+      keyframes: {
+        moveGradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      },
+      // We define a utility class to use the animation
+      animation: {
+        'gradient-pulse': 'moveGradient 4s ease infinite',
+      },
+      // === NEW STUFF ENDS HERE ===
     },
   },
   plugins: [],
