@@ -104,21 +104,24 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     0x...EVM...ADDRESS...HERE
                   </p>
-                  {/* --- FINAL COPY BUTTON FIX --- */}
+                  {/* --- FINAL COPY BUTTON FIX with border --- */}
                   <button
                     onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
-                    className={`flex w-28 shrink-0 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Use fixed w-28 AND shrink-0
+                    // Added border, hover:border-light-400, border-transparent when copied
+                    className={`flex w-28 shrink-0 items-center justify-center gap-2 rounded-lg border bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:border-light-400 hover:bg-opacity-75
+                      ${copiedAddress === 'evm' ? 'border-transparent' : 'border-dark-900'} `}
                   >
-                    {/* Inner span structure identical in both states */}
-                    {copiedAddress === 'evm' ? (
-                       <span className={`flex w-full items-center justify-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse`}>
-                        <IconCheck className="w-4 h-4" /> Copied!
-                      </span>
-                    ) : (
-                      <span className="flex w-full items-center justify-center gap-2">
-                        <IconCopy className="w-4 h-4" /> Copy
-                      </span>
-                    )}
+                    <span className={`flex w-full items-center justify-center gap-2 ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
+                      {copiedAddress === 'evm' ? (
+                        <>
+                          <IconCheck className="w-4 h-4" /> Copied!
+                        </>
+                      ) : (
+                        <>
+                          <IconCopy className="w-4 h-4" /> Copy
+                        </>
+                      )}
+                    </span>
                   </button>
                   {/* --- END FIX --- */}
                 </div>
@@ -132,21 +135,24 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     So...SOLANA...ADDRESS...HERE
                   </p>
-                   {/* --- FINAL COPY BUTTON FIX --- */}
+                   {/* --- FINAL COPY BUTTON FIX with border --- */}
                   <button
                     onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
-                    className={`flex w-28 shrink-0 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Use fixed w-28 AND shrink-0
+                     // Added border, hover:border-light-400, border-transparent when copied
+                    className={`flex w-28 shrink-0 items-center justify-center gap-2 rounded-lg border bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:border-light-400 hover:bg-opacity-75
+                      ${copiedAddress === 'sol' ? 'border-transparent' : 'border-dark-900'} `}
                   >
-                     {/* Inner span structure identical in both states */}
-                     {copiedAddress === 'sol' ? (
-                       <span className={`flex w-full items-center justify-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse`}>
-                        <IconCheck className="w-4 h-4" /> Copied!
-                      </span>
-                    ) : (
-                      <span className="flex w-full items-center justify-center gap-2">
-                        <IconCopy className="w-4 h-4" /> Copy
-                      </span>
-                    )}
+                     <span className={`flex w-full items-center justify-center gap-2 ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
+                      {copiedAddress === 'sol' ? (
+                        <>
+                          <IconCheck className="w-4 h-4" /> Copied!
+                        </>
+                      ) : (
+                        <>
+                          <IconCopy className="w-4 h-4" /> Copy
+                        </>
+                      )}
+                    </span>
                   </button>
                   {/* --- END FIX --- */}
                 </div>
