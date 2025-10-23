@@ -1,4 +1,4 @@
-'use client' // <- This is new: enables client-side interactivity for the copy button
+'use client' // Enables client-side interactivity for the copy button
 
 /*
   We define our SVG icons as components here.
@@ -143,7 +143,7 @@ export default function Home() {
               <IconSend className="w-5 h-5" />
             </a>
 
-            {/* NEW: Gradient Button in Header */}
+            {/* Gradient Button in Header */}
             <a
               href="#" // Add your "Buy" link here
               target="_blank"
@@ -176,8 +176,9 @@ export default function Home() {
           </p>
         </section>
 
-        {/* === TOKENOMICS SECTION (WITH GRADIENT BORDERS) === */}
+        {/* === TOKENOMICS SECTION (ALL BOXES HAVE GRADIENT BORDERS) === */}
         <section className="mx-auto w-full max-w-4xl py-12">
+          {/* Top 3 Boxes */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {/* Total Supply Box */}
             <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
@@ -214,43 +215,47 @@ export default function Home() {
             </div>
           </div>
 
-          {/* === NEW: DUAL CONTRACT ADDRESSES === */}
+          {/* Bottom 2 Address Boxes */}
           <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-            {/* EVM Address */}
-            <div className="rounded-lg border border-dark-900 bg-dark-900/50 p-6">
-              <h3 className="text-sm font-semibold uppercase text-light-400">
-                EVM Address (Base, ETH)
-              </h3>
-              <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row">
-                <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-sm text-light-200 sm:flex-grow">
-                  0x...EVM...ADDRESS...HERE
-                </p>
-                <button
-                  onClick={() => handleCopy('0x...EVM...ADDRESS...HERE')}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition hover:bg-opacity-75 sm:w-auto"
-                >
-                  <IconCopy className="w-4 h-4" />
-                  Copy
-                </button>
+            {/* EVM Address Box */}
+            <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
+              <div className="h-full w-full rounded-md bg-dark-900 p-6">
+                <h3 className="text-sm font-semibold uppercase text-light-400">
+                  EVM Address (Base, ETH, BNB) {/* <-- EDITED TEXT */}
+                </h3>
+                <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row">
+                  <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-sm text-light-200 sm:flex-grow">
+                    0x...EVM...ADDRESS...HERE
+                  </p>
+                  <button
+                    onClick={() => handleCopy('0x...EVM...ADDRESS...HERE')}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition hover:bg-opacity-75 sm:w-auto"
+                  >
+                    <IconCopy className="w-4 h-4" />
+                    Copy
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* Solana Address */}
-            <div className="rounded-lg border border-dark-900 bg-dark-900/50 p-6">
-              <h3 className="text-sm font-semibold uppercase text-light-400">
-                Solana Address
-              </h3>
-              <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row">
-                <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-sm text-light-200 sm:flex-grow">
-                  So...SOLANA...ADDRESS...HERE
-                </p>
-                <button
-                  onClick={() => handleCopy('So...SOLANA...ADDRESS...HERE')}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition hover:bg-opacity-75 sm:w-auto"
-                >
-                  <IconCopy className="w-4 h-4" />
-                  Copy
-                </button>
+            {/* Solana Address Box */}
+            <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
+              <div className="h-full w-full rounded-md bg-dark-900 p-6">
+                <h3 className="text-sm font-semibold uppercase text-light-400">
+                  Solana Address
+                </h3>
+                <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row">
+                  <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-sm text-light-200 sm:flex-grow">
+                    So...SOLANA...ADDRESS...HERE
+                  </p>
+                  <button
+                    onClick={() => handleCopy('So...SOLANA...ADDRESS...HERE')}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition hover:bg-opacity-75 sm:w-auto"
+                  >
+                    <IconCopy className="w-4 h-4" />
+                    Copy
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -269,7 +274,7 @@ export default function Home() {
             <span className="font-bold italic text-light-100">Tonr</span> is the
             ink. The essential fuel. Every print, every launch, every new meme
             draws from the <span className="italic">$TONR</span> supply.
-          </p>
+          </all>
           <p className="mt-6 text-lg font-semibold text-light-100">
             Simple. The machine needs its ink.
           </p>
@@ -282,7 +287,7 @@ export default function Home() {
             Join the community. Get the ink. Start printing.
           </p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
-            {/* "Buy" Button (no longer primary) */}
+            {/* "Buy" Button */}
             <GradientButton href="#">
               Buy $TONR
               <IconArrowUpRight />
