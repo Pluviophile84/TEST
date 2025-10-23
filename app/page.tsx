@@ -1,7 +1,6 @@
 'use client' // Enables client-side interactivity
 
-// NOTE: We are removing 'next/image' for now to fix the logo issue.
-// import Image from 'next/image'
+import Image from 'next/image' // <-- Re-added Image import
 import { useState } from 'react'
 
 /* SVG Icon Components */
@@ -63,11 +62,15 @@ export default function Home() {
       <main className="flex w-full max-w-5xl flex-col">
         {/* === HEADER === */}
         <header className="flex w-full items-center justify-between py-4">
-          {/* Logo - Reverted to text */}
+          {/* Logo - Restored Image Component */}
           <div className="flex items-center gap-2">
-            <span className="text-3xl font-black italic lowercase text-light-100">
-              tonr
-            </span>
+            <Image
+              src="/logo.png" // Replace with your logo filename
+              alt="TONR Logo"
+              width={100} // Adjust width
+              height={30} // Adjust height
+              priority
+            />
           </div>
 
           {/* Social Links */}
@@ -115,33 +118,24 @@ export default function Home() {
               <div className="h-full w-full rounded-md bg-dark-900 p-6">
                 <h3 className="text-sm font-semibold uppercase text-light-400">EVM Address (Base, ETH, BNB)</h3>
                 <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
-                  {/* Suppressed Address Text */}
-                  <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow"> {/* Smaller, lighter text */}
+                  <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     0x...EVM...ADDRESS...HERE
                   </p>
+                  {/* UPDATED COPY BUTTON */}
                   <button
                     onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
-                    // New Styling for Copy Button
-                    className={`relative flex w-full items-center justify-center gap-2 rounded-lg border border-dark-900 bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75
-                      ${copiedAddress === 'evm' ? 'border-transparent' : ''} /* Hide border when active */
-                    `}
+                    className={`flex w-full items-center justify-center gap-2 rounded-lg border border-dark-900 bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:border-light-400`}
                   >
-                    {/* Gradient Flash Effect */}
-                    {copiedAddress === 'evm' && (
-                      <span className="absolute inset-0 rounded-lg p-[1.5px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse z-0"></span>
+                    {copiedAddress === 'evm' ? (
+                      // Apply gradient animation to text and icon
+                      <span className="flex items-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse">
+                        <IconCheck className="w-4 h-4" /> Copied!
+                      </span>
+                    ) : (
+                      <>
+                        <IconCopy className="w-4 h-4" /> Copy
+                      </>
                     )}
-                     {/* Button Content */}
-                    <span className="relative z-10 flex items-center gap-2">
-                      {copiedAddress === 'evm' ? (
-                        <>
-                          <IconCheck className="w-4 h-4" /> Copied!
-                        </>
-                      ) : (
-                        <>
-                          <IconCopy className="w-4 h-4" /> Copy
-                        </>
-                      )}
-                    </span>
                   </button>
                 </div>
               </div>
@@ -151,33 +145,24 @@ export default function Home() {
               <div className="h-full w-full rounded-md bg-dark-900 p-6">
                 <h3 className="text-sm font-semibold uppercase text-light-400">Solana Address</h3>
                 <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
-                  {/* Suppressed Address Text */}
-                  <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow"> {/* Smaller, lighter text */}
+                  <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     So...SOLANA...ADDRESS...HERE
                   </p>
+                   {/* UPDATED COPY BUTTON */}
                   <button
                     onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
-                     // New Styling for Copy Button
-                    className={`relative flex w-full items-center justify-center gap-2 rounded-lg border border-dark-900 bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75
-                      ${copiedAddress === 'sol' ? 'border-transparent' : ''} /* Hide border when active */
-                    `}
+                    className={`flex w-full items-center justify-center gap-2 rounded-lg border border-dark-900 bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:border-light-400`}
                   >
-                    {/* Gradient Flash Effect */}
-                    {copiedAddress === 'sol' && (
-                      <span className="absolute inset-0 rounded-lg p-[1.5px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse z-0"></span>
+                    {copiedAddress === 'sol' ? (
+                      // Apply gradient animation to text and icon
+                      <span className="flex items-center gap-2 bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse">
+                        <IconCheck className="w-4 h-4" /> Copied!
+                      </span>
+                    ) : (
+                      <>
+                        <IconCopy className="w-4 h-4" /> Copy
+                      </>
                     )}
-                     {/* Button Content */}
-                    <span className="relative z-10 flex items-center gap-2">
-                      {copiedAddress === 'sol' ? (
-                        <>
-                          <IconCheck className="w-4 h-4" /> Copied!
-                        </>
-                      ) : (
-                        <>
-                          <IconCopy className="w-4 h-4" /> Copy
-                        </>
-                      )}
-                    </span>
                   </button>
                 </div>
               </div>
