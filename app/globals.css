@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Set up our dark mode theme and default text color
+*/
+body {
+  background-color: #0a0a0a; /* This is our dark.950 color */
+  color: #e2e8f0; /* This is our light.200 color */
+}
