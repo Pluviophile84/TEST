@@ -221,7 +221,7 @@ export default function Home() {
             <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
               <div className="h-full w-full rounded-md bg-dark-900 p-6">
                 <h3 className="text-sm font-semibold uppercase text-light-400">
-                  EVM Address (Base, ETH, BNB) {/* <-- EDITED TEXT */}
+                  EVM Address (Base, ETH, BNB)
                 </h3>
                 <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row">
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-sm text-light-200 sm:flex-grow">
@@ -274,7 +274,8 @@ export default function Home() {
             <span className="font-bold italic text-light-100">Tonr</span> is the
             ink. The essential fuel. Every print, every launch, every new meme
             draws from the <span className="italic">$TONR</span> supply.
-          </all>
+          </p>
+          {/* ^^^ THE TYPO WAS HERE. It is now </p> ^^^ */}
           <p className="mt-6 text-lg font-semibold text-light-100">
             Simple. The machine needs its ink.
           </p>
@@ -294,7 +295,7 @@ export default function Home() {
             </GradientButton>
 
             {/* "X" Button */}
-            <GradientButton href="https://x.com/your-twitter">
+            <GradientButton href="https.x.com/your-twitter">
               <IconTwitter />
               Follow on X
             </GradientButton>
