@@ -1,6 +1,6 @@
 'use client' // Enables client-side interactivity
 
-// Reverted import: No Image for now
+import Image from 'next/image' // <-- Image import restored
 import { useState } from 'react'
 
 /* SVG Icon Components */
@@ -52,11 +52,15 @@ export default function Home() {
       <main className="flex w-full max-w-5xl flex-col">
         {/* === HEADER === */}
         <header className="flex w-full items-center justify-between py-4">
-          {/* Logo - Reverted to text */}
+          {/* Logo - Image Component Restored */}
           <div className="flex items-center gap-2">
-            <span className="text-3xl font-black italic lowercase text-light-100">
-              tonr
-            </span>
+            <Image
+              src="/logo.png" // Replace with your logo filename
+              alt="TONR Logo"
+              width={100} // Adjust width
+              height={30} // Adjust height
+              priority
+            />
           </div>
 
           {/* Social Links */}
@@ -100,13 +104,13 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     0x...EVM...ADDRESS...HERE
                   </p>
-                  {/* UPDATED COPY BUTTON - Fixed Width, Consistent Structure */}
+                  {/* UPDATED COPY BUTTON - Added justify-center */}
                   <button
                     onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
-                    className={`flex w-28 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Use fixed w-28 (7rem)
+                    className={`flex w-28 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Added justify-center
                   >
-                    {/* Ensure span exists in both states */}
-                    <span className={`flex items-center gap-2 ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
+                    {/* Inner span now also uses justify-center */}
+                    <span className={`flex w-full items-center justify-center gap-2 ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
                       {copiedAddress === 'evm' ? (
                         <>
                           <IconCheck className="w-4 h-4" /> Copied!
@@ -129,13 +133,13 @@ export default function Home() {
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     So...SOLANA...ADDRESS...HERE
                   </p>
-                   {/* UPDATED COPY BUTTON - Fixed Width, Consistent Structure */}
+                   {/* UPDATED COPY BUTTON - Added justify-center */}
                   <button
                     onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
-                    className={`flex w-28 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Use fixed w-28 (7rem)
+                    className={`flex w-28 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`} // Added justify-center
                   >
-                     {/* Ensure span exists in both states */}
-                     <span className={`flex items-center gap-2 ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
+                     {/* Inner span now also uses justify-center */}
+                     <span className={`flex w-full items-center justify-center gap-2 ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
                       {copiedAddress === 'sol' ? (
                         <>
                           <IconCheck className="w-4 h-4" /> Copied!
