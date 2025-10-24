@@ -36,7 +36,7 @@ const GradientButton = ({ href, children, className = '', target = '_blank' }: {
 
 // === SECTION DIVIDER COMPONENT ===
 const SectionDivider = () => (
-    <hr className="border-t border-dark-900 max-w-4xl mx-auto" />
+    <hr className="border-t border-dark-900 max-w-4xl mx-auto" /> {/* No extra margin */}
 )
 
 // === MAIN PAGE COMPONENT ===
@@ -70,7 +70,7 @@ export default function Home() {
           </nav>
         </header>
 
-        {/* === HERO SECTION (Large Padding) === */}
+        {/* === HERO SECTION === */}
         <section className="flex flex-col items-center justify-center py-24 text-center md:py-40">
           <div className="mb-8 h-2 w-full max-w-sm rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
           <h1 className="mb-2 text-5xl font-extrabold md:text-7xl">
@@ -91,7 +91,7 @@ export default function Home() {
         <SectionDivider />
 
         {/* === TOKENOMICS SECTION (Reduced Padding) === */}
-        <section className="mx-auto w-full max-w-4xl py-16"> {/* py-12 -> py-16 */}
+        <section className="mx-auto w-full max-w-4xl py-16">
           {/* Top 3 Boxes */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Total Supply</h3><p className="mt-2 text-3xl font-bold text-light-100">1,000,000,000</p></div></div>
@@ -109,7 +109,7 @@ export default function Home() {
         <SectionDivider />
 
         {/* === ABOUT SECTION (Expandable - Reduced Padding) === */}
-        <section className="mx-auto w-full max-w-2xl py-16 text-center"> {/* py-24 -> py-16 */}
+        <section className="mx-auto w-full max-w-2xl py-16 text-center">
           <h2 className="mb-4 text-2xl font-bold text-light-100">What is $TONR?</h2>
           {/* Brief Text */}
           <div className="space-y-4 text-lg text-light-400">
@@ -146,7 +146,7 @@ export default function Home() {
         <SectionDivider />
 
         {/* === NEW SECTION: WHY $TONR MATTERS (Reduced Padding) === */}
-        <section className="mx-auto w-full max-w-2xl py-16 text-center"> {/* py-24 -> py-16 */}
+        <section className="mx-auto w-full max-w-2xl py-16 text-center">
           <h2 className="mb-4 text-2xl font-bold text-light-100">Why $TONR Matters</h2>
           <div className="space-y-4 text-lg text-light-400">
               <p>Timing is everything. tonr showed up before the noise.</p>
@@ -158,12 +158,11 @@ export default function Home() {
         </section>
 
         {/* --- DIVIDER --- */}
-        {/* Placeholder for future sections like Vision, How to Buy, Meme Zone */}
-        {/* We will add content here later */}
+        {/* Placeholder for future sections */}
         <SectionDivider />
 
         {/* === CTA SECTION (Large Padding) === */}
-        <section className="flex w-full flex-col items-center justify-center gap-4 py-24 md:py-32"> {/* Kept larger padding */}
+        <section className="flex w-full flex-col items-center justify-center gap-4 py-24 md:py-32">
           <h3 className="text-3xl font-bold">Get your $TONR</h3>
           <p className="text-lg text-light-400">Join the community. Get the ink. Start printing.</p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
@@ -173,14 +172,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* === FOOTER === */}
-        <footer className="flex w-full flex-col items-center justify-between gap-6 border-t border-dark-900 pt-8 pb-12 text-center sm:flex-row sm:text-left">
-            <div className="max-w-md space-y-1 text-sm text-light-400">
-                <p>TONR is not financial advice — it’s financial performance art.</p>
-                <p>We are the first print, the beta stain, the genesis ink drop of PRINTR.</p>
-                <p className="font-semibold text-light-200">When this thing starts printing multi-chain, you’ll wish you’d grabbed a cartridge early.</p>
-                <p className="pt-2 font-bold text-light-100">TONR ($TONR) — The Ink of the New Era.</p>
-            </div>
+        {/* === FOOTER (Reverted to Original) === */}
+        <footer className="flex w-full flex-col items-center justify-between gap-6 border-t border-dark-900 py-8 sm:flex-row">
+          <span className="font-semibold text-light-400">$TONR 2025</span> {/* Reverted Footer Text */}
           <div className="h-1.5 w-full max-w-xs rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
         </footer>
       </main>
