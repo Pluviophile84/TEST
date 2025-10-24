@@ -32,26 +32,26 @@ const GradientButton = ({ href, children, className = '', target = '_blank' }: {
       {children}
     </span>
   </a>
-)
+); // <-- Added semicolon for clarity, though often optional
 
 // === SECTION DIVIDER COMPONENT ===
 const SectionDivider = () => (
-    <hr className="border-t border-dark-900 max-w-4xl mx-auto" /> {/* No extra margin */}
-)
+    <hr className="border-t border-dark-900 max-w-4xl mx-auto" />
+); // <-- Added semicolon for clarity
 
 // === MAIN PAGE COMPONENT ===
 export default function Home() {
-  const [copiedAddress, setCopiedAddress] = useState<string | null>(null)
-  const [isAboutExpanded, setIsAboutExpanded] = useState(false)
+  const [copiedAddress, setCopiedAddress] = useState<string | null>(null); // Added semicolon
+  const [isAboutExpanded, setIsAboutExpanded] = useState(false); // Added semicolon
 
   const handleCopy = (addressType: string, textToCopy: string) => {
     navigator.clipboard.writeText(textToCopy).then(() => {
-      setCopiedAddress(addressType)
-      setTimeout(() => { setCopiedAddress(null) }, 2000)
+      setCopiedAddress(addressType); // Added semicolon
+      setTimeout(() => { setCopiedAddress(null); }, 2000); // Added semicolon
     }, (err) => {
-      console.error('Failed to copy text: ', err)
-    })
-  }
+      console.error('Failed to copy text: ', err); // Added semicolon
+    }); // Added semicolon
+  }; // Added semicolon
 
   return (
     <div className="flex min-h-screen flex-col items-center p-6 md:p-12 bg-dark-950 text-light-100">
@@ -90,15 +90,13 @@ export default function Home() {
         {/* --- DIVIDER --- */}
         <SectionDivider />
 
-        {/* === TOKENOMICS SECTION (Reduced Padding) === */}
+        {/* === TOKENOMICS SECTION === */}
         <section className="mx-auto w-full max-w-4xl py-16">
-          {/* Top 3 Boxes */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Total Supply</h3><p className="mt-2 text-3xl font-bold text-light-100">1,000,000,000</p></div></div>
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Taxes</h3><p className="mt-2 text-3xl font-bold text-light-100">0% / 0%</p></div></div>
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Liquidity</h3><p className="mt-2 text-3xl font-bold text-light-100">Locked</p></div></div>
           </div>
-          {/* Bottom 2 Address Boxes */}
           <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6"><h3 className="text-sm font-semibold uppercase text-light-400">EVM Address (Base, ETH, BNB)</h3><div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"><p className="truncate rounded-sm bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">0x...EVM...ADDRESS...HERE</p><div className="flex-none sm:ml-auto"><button onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')} aria-pressed={copiedAddress === 'evm'} className={`relative grid place-items-center w-28 min-w-[7rem] max-w-[7rem] flex-none rounded bg-dark-900 px-4 py-2 font-semibold text-light-100 leading-none whitespace-nowrap transition hover:bg-opacity-75`}><span className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-out ${copiedAddress === 'evm' ? 'opacity-0' : 'opacity-100'}`}><IconCopy className="w-4 h-4 shrink-0" /> Copy</span><span aria-hidden={copiedAddress !== 'evm'} className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-in bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse ${copiedAddress === 'evm' ? 'opacity-100' : 'opacity-0'}`}><IconCheck className="w-4 h-4 shrink-0" /> Copied!</span></button></div></div></div></div>
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6"><h3 className="text-sm font-semibold uppercase text-light-400">Solana Address</h3><div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"><p className="truncate rounded-sm bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">So...SOLANA...ADDRESS...HERE</p><div className="flex-none sm:ml-auto"><button onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')} aria-pressed={copiedAddress === 'sol'} className={`relative grid place-items-center w-28 min-w-[7rem] max-w-[7rem] flex-none rounded bg-dark-900 px-4 py-2 font-semibold text-light-100 leading-none whitespace-nowrap transition hover:bg-opacity-75`}><span className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-out ${copiedAddress === 'sol' ? 'opacity-0' : 'opacity-100'}`}><IconCopy className="w-4 h-4 shrink-0" /> Copy</span><span aria-hidden={copiedAddress !== 'sol'} className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-in bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse ${copiedAddress === 'sol' ? 'opacity-100' : 'opacity-0'}`}><IconCheck className="w-4 h-4 shrink-0" /> Copied!</span></button></div></div></div></div>
@@ -108,24 +106,19 @@ export default function Home() {
         {/* --- DIVIDER --- */}
         <SectionDivider />
 
-        {/* === ABOUT SECTION (Expandable - Reduced Padding) === */}
+        {/* === ABOUT SECTION (Expandable) === */}
         <section className="mx-auto w-full max-w-2xl py-16 text-center">
           <h2 className="mb-4 text-2xl font-bold text-light-100">What is $TONR?</h2>
-          {/* Brief Text */}
           <div className="space-y-4 text-lg text-light-400">
             <p><span className="font-bold text-light-100">Printr</span> is the machine — a high-speed, cross-chain memecoin launcher.</p>
             <p><span className="font-bold italic text-light-100">Tonr</span> is the ink — the essential fuel. Every print, every launch, every new meme draws from the <span className="italic">$TONR</span> supply.</p>
             <p className="mt-6 text-lg font-semibold text-light-100">Simple. The machine needs its ink.</p>
           </div>
-
-          {/* Read More Button */}
           {!isAboutExpanded && (
             <button onClick={() => setIsAboutExpanded(true)} className="mt-6 inline-flex items-center gap-1 font-semibold text-tonr-cyan hover:text-opacity-80 transition">
               Read More <span className="text-xl">→</span>
             </button>
           )}
-
-          {/* Expanded Content */}
           {isAboutExpanded && (
             <div className="mt-8 space-y-4 text-lg text-light-400 text-left sm:text-center">
               <p>Every great printer needs ink — and every meta needs its beta. That’s $TONR, the unofficial native token of the printr era. We didn’t wait for permission; we just loaded the cartridge and hit Print.</p>
@@ -145,7 +138,7 @@ export default function Home() {
         {/* --- DIVIDER --- */}
         <SectionDivider />
 
-        {/* === NEW SECTION: WHY $TONR MATTERS (Reduced Padding) === */}
+        {/* === NEW SECTION: WHY $TONR MATTERS === */}
         <section className="mx-auto w-full max-w-2xl py-16 text-center">
           <h2 className="mb-4 text-2xl font-bold text-light-100">Why $TONR Matters</h2>
           <div className="space-y-4 text-lg text-light-400">
@@ -158,10 +151,9 @@ export default function Home() {
         </section>
 
         {/* --- DIVIDER --- */}
-        {/* Placeholder for future sections */}
         <SectionDivider />
 
-        {/* === CTA SECTION (Large Padding) === */}
+        {/* === CTA SECTION === */}
         <section className="flex w-full flex-col items-center justify-center gap-4 py-24 md:py-32">
           <h3 className="text-3xl font-bold">Get your $TONR</h3>
           <p className="text-lg text-light-400">Join the community. Get the ink. Start printing.</p>
@@ -172,12 +164,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* === FOOTER (Reverted to Original) === */}
-        <footer className="flex w-full flex-col items-center justify-between gap-6 border-t border-dark-900 py-8 sm:flex-row">
-          <span className="font-semibold text-light-400">$TONR 2025</span> {/* Reverted Footer Text */}
+        {/* === FOOTER === */}
+        <footer className="flex w-full flex-col items-center justify-between gap-6 border-t border-dark-900 pt-8 pb-12 text-center sm:flex-row sm:text-left">
+          <span className="font-semibold text-light-400">$TONR 2025</span>
           <div className="h-1.5 w-full max-w-xs rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
         </footer>
       </main>
     </div>
-  )
+  );
 }
