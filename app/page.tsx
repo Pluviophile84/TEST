@@ -166,7 +166,7 @@ export default function Home() {
 
         {/* === FOOTER === */}
         <footer className="flex w-full flex-col items-center justify-between gap-6 border-t border-dark-900 pt-8 pb-12 text-center sm:flex-row sm:text-left">
-          <span className="font-semibold text-light-400">$TONR 2025</span>
+          <span className="font-semibold text-light-400">$TONR @2025</span>
           <div className="h-1.5 w-full max-w-xs rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
         </footer>
       </main>
