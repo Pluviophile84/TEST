@@ -104,7 +104,6 @@ export default function Home() {
                     0x...EVM...ADDRESS...HERE
                   </p>
                   <div className="flex-none">
-                    {/* --- ZERO-REFLOW COPY BUTTON (Flex Fix) --- */}
                     <button
                       onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
                       aria-pressed={copiedAddress === 'evm'}
@@ -119,27 +118,26 @@ export default function Home() {
                       {/* Default state */}
                       <span
                         className={`
-                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2 /* Use flex here */
+                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2
                           transition-opacity duration-150 ease-out
                           ${copiedAddress === 'evm' ? 'opacity-0' : 'opacity-100'}
                         `}
                       >
                         <IconCopy className="w-4 h-4 shrink-0" /> Copy
                       </span>
-                      {/* Copied state */}
+                      {/* Copied state - Gradient is now applied UNCONDITIONALLY */}
                       <span
                         aria-hidden={copiedAddress !== 'evm'}
                         className={`
-                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2 /* Use flex here */
+                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2
                           transition-opacity duration-150 ease-in
-                          ${copiedAddress === 'evm' ? 'opacity-100' : 'opacity-0'}
-                          ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}
+                          bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse /* Always apply gradient */
+                          ${copiedAddress === 'evm' ? 'opacity-100' : 'opacity-0'} /* Only control opacity */
                         `}
                       >
                         <IconCheck className="w-4 h-4 shrink-0" /> Copied!
                       </span>
                     </button>
-                    {/* --- END ZERO-REFLOW BUTTON --- */}
                   </div>
                 </div>
               </div>
@@ -153,7 +151,6 @@ export default function Home() {
                     So...SOLANA...ADDRESS...HERE
                   </p>
                   <div className="flex-none">
-                    {/* --- ZERO-REFLOW COPY BUTTON (Flex Fix) --- */}
                     <button
                       onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
                       aria-pressed={copiedAddress === 'sol'}
@@ -168,27 +165,26 @@ export default function Home() {
                       {/* Default state */}
                       <span
                         className={`
-                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2 /* Use flex here */
+                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2
                           transition-opacity duration-150 ease-out
                           ${copiedAddress === 'sol' ? 'opacity-0' : 'opacity-100'}
                         `}
                       >
                         <IconCopy className="w-4 h-4 shrink-0" /> Copy
                       </span>
-                      {/* Copied state */}
+                      {/* Copied state - Gradient is now applied UNCONDITIONALLY */}
                       <span
                         aria-hidden={copiedAddress !== 'sol'}
                         className={`
-                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2 /* Use flex here */
+                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2
                           transition-opacity duration-150 ease-in
-                          ${copiedAddress === 'sol' ? 'opacity-100' : 'opacity-0'}
-                          ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}
+                          bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse /* Always apply gradient */
+                          ${copiedAddress === 'sol' ? 'opacity-100' : 'opacity-0'} /* Only control opacity */
                         `}
                       >
                         <IconCheck className="w-4 h-4 shrink-0" /> Copied!
                       </span>
                     </button>
-                    {/* --- END ZERO-REFLOW BUTTON --- */}
                   </div>
                 </div>
               </div>
