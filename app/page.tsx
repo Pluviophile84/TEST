@@ -20,15 +20,15 @@ const IconCheck = ({ className = 'w-5 h-5' }: { className?: string }) => (
  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
 )
 
-// === GRADIENT BUTTON COMPONENT ===
+// === GRADIENT BUTTON COMPONENT (Reduced rounding) ===
 const GradientButton = ({ href, children, className = '', target = '_blank' }: { href: string; children: React.ReactNode; className?: string; target?: string }) => (
   <a
     href={href}
     target={target}
     rel="noopener noreferrer"
-    className={`group rounded-lg p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse ${className}`}
+    className={`group rounded p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse ${className}`} // rounded-lg -> rounded
   >
-    <span className={`flex h-full w-full items-center justify-center gap-2 rounded-md px-6 py-3 text-lg font-bold bg-dark-900 text-light-100 transition-all duration-300 group-hover:bg-transparent group-hover:text-black`}>
+    <span className={`flex h-full w-full items-center justify-center gap-2 rounded-sm px-6 py-3 text-lg font-bold bg-dark-900 text-light-100 transition-all duration-300 group-hover:bg-transparent group-hover:text-black`}> {/* rounded-md -> rounded-sm */}
       {children}
     </span>
   </a>
@@ -55,17 +55,17 @@ export default function Home() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Image
-              src="/34d864da-76a8-4141-a8db-f531f21afe1b.png" // Replace with your logo filename
+              src="/logo.png" // Replace with your logo filename
               alt="TONR Logo"
               width={100} // Adjust width
               height={30} // Adjust height
               priority
             />
           </div>
-          {/* Social Links */}
+          {/* Social Links (Reduced rounding) */}
           <nav className="flex items-center gap-2 sm:gap-4">
-            <a href="#" target="_blank" rel="noopener noreferrer" className="group rounded-lg p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse">
-              <span className="flex h-full w-full items-center justify-center gap-1.5 rounded-md px-4 py-2 text-sm font-semibold bg-dark-900 text-light-100 transition-all duration-300 group-hover:bg-transparent group-hover:text-black">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="group rounded p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse"> {/* rounded-lg -> rounded */}
+              <span className="flex h-full w-full items-center justify-center gap-1.5 rounded-sm px-4 py-2 text-sm font-semibold bg-dark-900 text-light-100 transition-all duration-300 group-hover:bg-transparent group-hover:text-black"> {/* rounded-md -> rounded-sm */}
                 Buy Now
                 <IconArrowUpRight className="w-4 h-4" />
               </span>
@@ -73,9 +73,9 @@ export default function Home() {
           </nav>
         </header>
 
-        {/* === HERO SECTION === */}
+        {/* === HERO SECTION (Reduced rounding) === */}
         <section className="flex flex-col items-center justify-center py-24 text-center md:py-40">
-          <div className="mb-8 h-2 w-full max-w-sm rounded-full bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
+          <div className="mb-8 h-2 w-full max-w-sm rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" /> {/* rounded-full -> rounded */}
           <h1 className="mb-6 text-5xl font-extrabold md:text-7xl">
             The Printr runs on <span className="italic">tonr</span>.
           </h1>
@@ -85,86 +85,74 @@ export default function Home() {
           </p>
         </section>
 
-        {/* === TOKENOMICS SECTION === */}
+        {/* === TOKENOMICS SECTION (Reduced rounding) === */}
         <section className="mx-auto w-full max-w-4xl py-12">
           {/* Top 3 Boxes */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="rounded-lg bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-md bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Total Supply</h3><p className="mt-2 text-3xl font-bold text-light-100">1,000,000,000</p></div></div>
-            <div className="rounded-lg bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-md bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Taxes</h3><p className="mt-2 text-3xl font-bold text-light-100">0% / 0%</p></div></div>
-            <div className="rounded-lg bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-md bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Liquidity</h3><p className="mt-2 text-3xl font-bold text-light-100">Locked</p></div></div>
+            <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Total Supply</h3><p className="mt-2 text-3xl font-bold text-light-100">1,000,000,000</p></div></div> {/* rounded-lg -> rounded, rounded-md -> rounded-sm */}
+            <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Taxes</h3><p className="mt-2 text-3xl font-bold text-light-100">0% / 0%</p></div></div> {/* rounded-lg -> rounded, rounded-md -> rounded-sm */}
+            <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Liquidity</h3><p className="mt-2 text-3xl font-bold text-light-100">Locked</p></div></div> {/* rounded-lg -> rounded, rounded-md -> rounded-sm */}
           </div>
           {/* Bottom 2 Address Boxes */}
           <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
             {/* EVM Address Box */}
-            <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
-              <div className="h-full w-full rounded-md bg-dark-900 p-6">
+            <div className="rounded bg-tonr-gradient p-[1.5px]"> {/* rounded-lg -> rounded */}
+              <div className="h-full w-full rounded-sm bg-dark-900 p-6"> {/* rounded-md -> rounded-sm */}
                 <h3 className="text-sm font-semibold uppercase text-light-400">EVM Address (Base, ETH, BNB)</h3>
-                {/* Flex container for address and button */}
                 <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
-                  <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
+                  <p className="truncate rounded-sm bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow"> {/* rounded-md -> rounded-sm */}
                     0x...EVM...ADDRESS...HERE
                   </p>
-                  {/* Wrapper div - ADDED sm:ml-auto */}
                   <div className="flex-none sm:ml-auto">
-                    {/* --- ZERO-REFLOW COPY BUTTON --- */}
                     <button
                       onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
                       aria-pressed={copiedAddress === 'evm'}
                       className={`
                         relative grid place-items-center
                         w-28 min-w-[7rem] max-w-[7rem] flex-none
-                        rounded-lg bg-dark-900 px-4 py-2
+                        rounded bg-dark-900 px-4 py-2 /* rounded-lg -> rounded */
                         font-semibold text-light-100 leading-none whitespace-nowrap
                         transition hover:bg-opacity-75
                       `}
                     >
-                      {/* Default state */}
                       <span className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-out ${copiedAddress === 'evm' ? 'opacity-0' : 'opacity-100'}`}>
                         <IconCopy className="w-4 h-4 shrink-0" /> Copy
                       </span>
-                      {/* Copied state */}
                       <span aria-hidden={copiedAddress !== 'evm'} className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-in bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse ${copiedAddress === 'evm' ? 'opacity-100' : 'opacity-0'}`}>
                         <IconCheck className="w-4 h-4 shrink-0" /> Copied!
                       </span>
                     </button>
-                    {/* --- END ZERO-REFLOW BUTTON --- */}
                   </div>
                 </div>
               </div>
             </div>
             {/* Solana Address Box */}
-            <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
-              <div className="h-full w-full rounded-md bg-dark-900 p-6">
+            <div className="rounded bg-tonr-gradient p-[1.5px]"> {/* rounded-lg -> rounded */}
+              <div className="h-full w-full rounded-sm bg-dark-900 p-6"> {/* rounded-md -> rounded-sm */}
                 <h3 className="text-sm font-semibold uppercase text-light-400">Solana Address</h3>
-                 {/* Flex container for address and button */}
                 <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
-                  <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
+                  <p className="truncate rounded-sm bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow"> {/* rounded-md -> rounded-sm */}
                     So...SOLANA...ADDRESS...HERE
                   </p>
-                  {/* Wrapper div - ADDED sm:ml-auto */}
-                   <div className="flex-none sm:ml-auto">
-                    {/* --- ZERO-REFLOW COPY BUTTON --- */}
+                  <div className="flex-none sm:ml-auto">
                     <button
                       onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
                       aria-pressed={copiedAddress === 'sol'}
                       className={`
                         relative grid place-items-center
                         w-28 min-w-[7rem] max-w-[7rem] flex-none
-                        rounded-lg bg-dark-900 px-4 py-2
+                        rounded bg-dark-900 px-4 py-2 /* rounded-lg -> rounded */
                         font-semibold text-light-100 leading-none whitespace-nowrap
                         transition hover:bg-opacity-75
                       `}
                     >
-                      {/* Default state */}
                       <span className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-out ${copiedAddress === 'sol' ? 'opacity-0' : 'opacity-100'}`}>
                         <IconCopy className="w-4 h-4 shrink-0" /> Copy
                       </span>
-                      {/* Copied state */}
                       <span aria-hidden={copiedAddress !== 'sol'} className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-in bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse ${copiedAddress === 'sol' ? 'opacity-100' : 'opacity-0'}`}>
                         <IconCheck className="w-4 h-4 shrink-0" /> Copied!
                       </span>
                     </button>
-                    {/* --- END ZERO-REFLOW BUTTON --- */}
                   </div>
                 </div>
               </div>
@@ -191,10 +179,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* === FOOTER === */}
+        {/* === FOOTER (Reduced rounding) === */}
         <footer className="flex w-full flex-col items-center justify-between gap-6 border-t border-dark-900 py-8 sm:flex-row">
           <span className="font-semibold text-light-400">$TONR 2025</span>
-          <div className="h-1.5 w-full max-w-xs rounded-full bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
+          <div className="h-1.5 w-full max-w-xs rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" /> {/* rounded-full -> rounded */}
         </footer>
       </main>
     </div>
