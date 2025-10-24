@@ -99,44 +99,41 @@ export default function Home() {
             <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
               <div className="h-full w-full rounded-md bg-dark-900 p-6">
                 <h3 className="text-sm font-semibold uppercase text-light-400">EVM Address (Base, ETH, BNB)</h3>
-                {/* Flex container for address and button */}
                 <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     0x...EVM...ADDRESS...HERE
                   </p>
-                  {/* Wrapper div to prevent button stretching */}
                   <div className="flex-none">
-                    {/* --- ZERO-REFLOW COPY BUTTON --- */}
+                    {/* --- ZERO-REFLOW COPY BUTTON (Flex Fix) --- */}
                     <button
                       onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
                       aria-pressed={copiedAddress === 'evm'}
                       className={`
-                        relative grid place-items-center /* Use grid for overlay */
-                        w-28 min-w-[7rem] max-w-[7rem] flex-none /* Fixed width, no flex */
-                        rounded-lg bg-dark-900 px-4 py-2 /* Styling */
-                        font-semibold text-light-100 leading-none whitespace-nowrap /* Typography */
-                        transition hover:bg-opacity-75 /* Hover effect */
+                        relative grid place-items-center
+                        w-28 min-w-[7rem] max-w-[7rem] flex-none
+                        rounded-lg bg-dark-900 px-4 py-2
+                        font-semibold text-light-100 leading-none whitespace-nowrap
+                        transition hover:bg-opacity-75
                       `}
                     >
                       {/* Default state */}
                       <span
                         className={`
-                          col-start-1 row-start-1 inline-flex items-center justify-center gap-2 /* Position in grid */
-                          transition-opacity duration-150 ease-out /* Fade out */
-                          ${copiedAddress === 'evm' ? 'opacity-0' : 'opacity-100'} /* Control visibility */
+                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2 /* Use flex here */
+                          transition-opacity duration-150 ease-out
+                          ${copiedAddress === 'evm' ? 'opacity-0' : 'opacity-100'}
                         `}
                       >
                         <IconCopy className="w-4 h-4 shrink-0" /> Copy
                       </span>
-
                       {/* Copied state */}
                       <span
-                        aria-hidden={copiedAddress !== 'evm'} // Hide from accessibility when not visible
+                        aria-hidden={copiedAddress !== 'evm'}
                         className={`
-                          col-start-1 row-start-1 inline-flex items-center justify-center gap-2 /* Position in grid */
-                          transition-opacity duration-150 ease-in /* Fade in */
-                          ${copiedAddress === 'evm' ? 'opacity-100' : 'opacity-0'} /* Control visibility */
-                          ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''} /* Apply gradient animation */
+                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2 /* Use flex here */
+                          transition-opacity duration-150 ease-in
+                          ${copiedAddress === 'evm' ? 'opacity-100' : 'opacity-0'}
+                          ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}
                         `}
                       >
                         <IconCheck className="w-4 h-4 shrink-0" /> Copied!
@@ -151,44 +148,41 @@ export default function Home() {
             <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
               <div className="h-full w-full rounded-md bg-dark-900 p-6">
                 <h3 className="text-sm font-semibold uppercase text-light-400">Solana Address</h3>
-                 {/* Flex container for address and button */}
                 <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     So...SOLANA...ADDRESS...HERE
                   </p>
-                  {/* Wrapper div to prevent button stretching */}
-                   <div className="flex-none">
-                    {/* --- ZERO-REFLOW COPY BUTTON --- */}
+                  <div className="flex-none">
+                    {/* --- ZERO-REFLOW COPY BUTTON (Flex Fix) --- */}
                     <button
                       onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
                       aria-pressed={copiedAddress === 'sol'}
                       className={`
-                        relative grid place-items-center /* Use grid for overlay */
-                        w-28 min-w-[7rem] max-w-[7rem] flex-none /* Fixed width, no flex */
-                        rounded-lg bg-dark-900 px-4 py-2 /* Styling */
-                        font-semibold text-light-100 leading-none whitespace-nowrap /* Typography */
-                        transition hover:bg-opacity-75 /* Hover effect */
+                        relative grid place-items-center
+                        w-28 min-w-[7rem] max-w-[7rem] flex-none
+                        rounded-lg bg-dark-900 px-4 py-2
+                        font-semibold text-light-100 leading-none whitespace-nowrap
+                        transition hover:bg-opacity-75
                       `}
                     >
                       {/* Default state */}
                       <span
                         className={`
-                          col-start-1 row-start-1 inline-flex items-center justify-center gap-2 /* Position in grid */
-                          transition-opacity duration-150 ease-out /* Fade out */
-                          ${copiedAddress === 'sol' ? 'opacity-0' : 'opacity-100'} /* Control visibility */
+                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2 /* Use flex here */
+                          transition-opacity duration-150 ease-out
+                          ${copiedAddress === 'sol' ? 'opacity-0' : 'opacity-100'}
                         `}
                       >
                         <IconCopy className="w-4 h-4 shrink-0" /> Copy
                       </span>
-
                       {/* Copied state */}
                       <span
-                        aria-hidden={copiedAddress !== 'sol'} // Hide from accessibility when not visible
+                        aria-hidden={copiedAddress !== 'sol'}
                         className={`
-                          col-start-1 row-start-1 inline-flex items-center justify-center gap-2 /* Position in grid */
-                          transition-opacity duration-150 ease-in /* Fade in */
-                          ${copiedAddress === 'sol' ? 'opacity-100' : 'opacity-0'} /* Control visibility */
-                          ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''} /* Apply gradient animation */
+                          col-start-1 row-start-1 flex w-full items-center justify-center gap-2 /* Use flex here */
+                          transition-opacity duration-150 ease-in
+                          ${copiedAddress === 'sol' ? 'opacity-100' : 'opacity-0'}
+                          ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}
                         `}
                       >
                         <IconCheck className="w-4 h-4 shrink-0" /> Copied!
