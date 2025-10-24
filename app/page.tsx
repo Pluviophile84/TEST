@@ -55,7 +55,7 @@ export default function Home() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Image
-              src="/logo.png" // Replace with your logo filename
+              src="/34d864da-76a8-4141-a8db-f531f21afe1b.png" // Replace with your logo filename
               alt="TONR Logo"
               width={100} // Adjust width
               height={30} // Adjust height
