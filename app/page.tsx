@@ -62,7 +62,6 @@ export default function Home() {
               priority
             />
           </div>
-
           {/* Social Links */}
           <nav className="flex items-center gap-2 sm:gap-4">
             <a href="#" target="_blank" rel="noopener noreferrer" className="group rounded-lg p-[2px] bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse">
@@ -100,29 +99,51 @@ export default function Home() {
             <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
               <div className="h-full w-full rounded-md bg-dark-900 p-6">
                 <h3 className="text-sm font-semibold uppercase text-light-400">EVM Address (Base, ETH, BNB)</h3>
+                {/* Flex container for address and button */}
                 <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     0x...EVM...ADDRESS...HERE
                   </p>
-                  {/* --- FINAL COPY BUTTON FIX - No Border --- */}
-                  <button
-                    onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
-                    // Removed ALL border classes
-                    className={`flex w-28 shrink-0 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`}
-                  >
-                    <span className={`flex w-full items-center justify-center gap-2 ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
-                      {copiedAddress === 'evm' ? (
-                        <>
-                          <IconCheck className="w-4 h-4" /> Copied!
-                        </>
-                      ) : (
-                        <>
-                          <IconCopy className="w-4 h-4" /> Copy
-                        </>
-                      )}
-                    </span>
-                  </button>
-                  {/* --- END FIX --- */}
+                  {/* Wrapper div to prevent button stretching */}
+                  <div className="flex-none">
+                    {/* --- ZERO-REFLOW COPY BUTTON --- */}
+                    <button
+                      onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')}
+                      aria-pressed={copiedAddress === 'evm'}
+                      className={`
+                        relative grid place-items-center /* Use grid for overlay */
+                        w-28 min-w-[7rem] max-w-[7rem] flex-none /* Fixed width, no flex */
+                        rounded-lg bg-dark-900 px-4 py-2 /* Styling */
+                        font-semibold text-light-100 leading-none whitespace-nowrap /* Typography */
+                        transition hover:bg-opacity-75 /* Hover effect */
+                      `}
+                    >
+                      {/* Default state */}
+                      <span
+                        className={`
+                          col-start-1 row-start-1 inline-flex items-center justify-center gap-2 /* Position in grid */
+                          transition-opacity duration-150 ease-out /* Fade out */
+                          ${copiedAddress === 'evm' ? 'opacity-0' : 'opacity-100'} /* Control visibility */
+                        `}
+                      >
+                        <IconCopy className="w-4 h-4 shrink-0" /> Copy
+                      </span>
+
+                      {/* Copied state */}
+                      <span
+                        aria-hidden={copiedAddress !== 'evm'} // Hide from accessibility when not visible
+                        className={`
+                          col-start-1 row-start-1 inline-flex items-center justify-center gap-2 /* Position in grid */
+                          transition-opacity duration-150 ease-in /* Fade in */
+                          ${copiedAddress === 'evm' ? 'opacity-100' : 'opacity-0'} /* Control visibility */
+                          ${copiedAddress === 'evm' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''} /* Apply gradient animation */
+                        `}
+                      >
+                        <IconCheck className="w-4 h-4 shrink-0" /> Copied!
+                      </span>
+                    </button>
+                    {/* --- END ZERO-REFLOW BUTTON --- */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -130,29 +151,51 @@ export default function Home() {
             <div className="rounded-lg bg-tonr-gradient p-[1.5px]">
               <div className="h-full w-full rounded-md bg-dark-900 p-6">
                 <h3 className="text-sm font-semibold uppercase text-light-400">Solana Address</h3>
+                 {/* Flex container for address and button */}
                 <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
                   <p className="truncate rounded-md bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">
                     So...SOLANA...ADDRESS...HERE
                   </p>
-                   {/* --- FINAL COPY BUTTON FIX - No Border --- */}
-                  <button
-                    onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
-                    // Removed ALL border classes
-                    className={`flex w-28 shrink-0 items-center justify-center gap-2 rounded-lg bg-dark-900 px-4 py-2 font-semibold text-light-100 transition sm:w-auto hover:bg-opacity-75`}
-                  >
-                     <span className={`flex w-full items-center justify-center gap-2 ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''}`}>
-                      {copiedAddress === 'sol' ? (
-                        <>
-                          <IconCheck className="w-4 h-4" /> Copied!
-                        </>
-                      ) : (
-                        <>
-                          <IconCopy className="w-4 h-4" /> Copy
-                        </>
-                      )}
-                    </span>
-                  </button>
-                  {/* --- END FIX --- */}
+                  {/* Wrapper div to prevent button stretching */}
+                   <div className="flex-none">
+                    {/* --- ZERO-REFLOW COPY BUTTON --- */}
+                    <button
+                      onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')}
+                      aria-pressed={copiedAddress === 'sol'}
+                      className={`
+                        relative grid place-items-center /* Use grid for overlay */
+                        w-28 min-w-[7rem] max-w-[7rem] flex-none /* Fixed width, no flex */
+                        rounded-lg bg-dark-900 px-4 py-2 /* Styling */
+                        font-semibold text-light-100 leading-none whitespace-nowrap /* Typography */
+                        transition hover:bg-opacity-75 /* Hover effect */
+                      `}
+                    >
+                      {/* Default state */}
+                      <span
+                        className={`
+                          col-start-1 row-start-1 inline-flex items-center justify-center gap-2 /* Position in grid */
+                          transition-opacity duration-150 ease-out /* Fade out */
+                          ${copiedAddress === 'sol' ? 'opacity-0' : 'opacity-100'} /* Control visibility */
+                        `}
+                      >
+                        <IconCopy className="w-4 h-4 shrink-0" /> Copy
+                      </span>
+
+                      {/* Copied state */}
+                      <span
+                        aria-hidden={copiedAddress !== 'sol'} // Hide from accessibility when not visible
+                        className={`
+                          col-start-1 row-start-1 inline-flex items-center justify-center gap-2 /* Position in grid */
+                          transition-opacity duration-150 ease-in /* Fade in */
+                          ${copiedAddress === 'sol' ? 'opacity-100' : 'opacity-0'} /* Control visibility */
+                          ${copiedAddress === 'sol' ? 'bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse' : ''} /* Apply gradient animation */
+                        `}
+                      >
+                        <IconCheck className="w-4 h-4 shrink-0" /> Copied!
+                      </span>
+                    </button>
+                    {/* --- END ZERO-REFLOW BUTTON --- */}
+                  </div>
                 </div>
               </div>
             </div>
