@@ -32,26 +32,26 @@ const GradientButton = ({ href, children, className = '', target = '_blank' }: {
       {children}
     </span>
   </a>
-); // <-- Added semicolon for clarity, though often optional
+);
 
 // === SECTION DIVIDER COMPONENT ===
 const SectionDivider = () => (
     <hr className="border-t border-dark-900 max-w-4xl mx-auto" />
-); // <-- Added semicolon for clarity
+);
 
 // === MAIN PAGE COMPONENT ===
 export default function Home() {
-  const [copiedAddress, setCopiedAddress] = useState<string | null>(null); // Added semicolon
-  const [isAboutExpanded, setIsAboutExpanded] = useState(false); // Added semicolon
+  const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
+  const [isAboutExpanded, setIsAboutExpanded] = useState(false);
 
   const handleCopy = (addressType: string, textToCopy: string) => {
     navigator.clipboard.writeText(textToCopy).then(() => {
-      setCopiedAddress(addressType); // Added semicolon
-      setTimeout(() => { setCopiedAddress(null); }, 2000); // Added semicolon
+      setCopiedAddress(addressType);
+      setTimeout(() => { setCopiedAddress(null); }, 2000);
     }, (err) => {
-      console.error('Failed to copy text: ', err); // Added semicolon
-    }); // Added semicolon
-  }; // Added semicolon
+      console.error('Failed to copy text: ', err);
+    });
+  };
 
   return (
     <div className="flex min-h-screen flex-col items-center p-6 md:p-12 bg-dark-950 text-light-100">
@@ -138,15 +138,17 @@ export default function Home() {
         {/* --- DIVIDER --- */}
         <SectionDivider />
 
-        {/* === NEW SECTION: WHY $TONR MATTERS === */}
-        <section className="mx-auto w-full max-w-2xl py-16 text-center">
-          <h2 className="mb-4 text-2xl font-bold text-light-100">Why $TONR Matters</h2>
-          <div className="space-y-4 text-lg text-light-400">
-              <p>Timing is everything. tonr showed up before the noise.</p>
-              <p>The meta is shifting. Pump.fun ruled. Bonk.fun flashed. But printr changed the game — a true multi-chain meme factory ready to dethrone them all.</p>
-              <p>And when that happens (because in crypto it always does, fast), traders will look for the first token that made sense before it was obvious.</p>
-              <p className="font-semibold text-light-100">That’s $TONR — the origin stain, the culture ticker tied to the next liquidity wave.</p>
-              <p className="italic text-light-200">The machine needs its ink.<br/>The market remembers the first stain.</p>
+        {/* === NEW SECTION: WHY $TONR MATTERS (NEW Background & Padding) === */}
+        <section className="mx-auto w-full max-w-4xl py-16 rounded bg-dark-900 px-6 md:px-12"> {/* Added bg-dark-900, padding, max-w-4xl */}
+          <div className="max-w-2xl mx-auto text-center"> {/* Centered content */}
+            <h2 className="mb-4 text-2xl font-bold text-light-100">Why $TONR Matters</h2>
+            <div className="space-y-4 text-lg text-light-400">
+                <p>Timing is everything. tonr showed up before the noise.</p>
+                <p>The meta is shifting. Pump.fun ruled. Bonk.fun flashed. But printr changed the game — a true multi-chain meme factory ready to dethrone them all.</p>
+                <p>And when that happens (because in crypto it always does, fast), traders will look for the first token that made sense before it was obvious.</p>
+                <p className="font-semibold text-light-100">That’s $TONR — the origin stain, the culture ticker tied to the next liquidity wave.</p>
+                <p className="italic text-light-200">The machine needs its ink.<br/>The market remembers the first stain.</p>
+            </div>
           </div>
         </section>
 
@@ -166,7 +168,7 @@ export default function Home() {
 
         {/* === FOOTER === */}
         <footer className="flex w-full flex-col items-center justify-between gap-6 border-t border-dark-900 pt-8 pb-12 text-center sm:flex-row sm:text-left">
-          <span className="font-semibold text-light-400">$TONR @2025</span>
+          <span className="font-semibold text-light-400">$TONR 2025</span>
           <div className="h-1.5 w-full max-w-xs rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
         </footer>
       </main>
