@@ -73,17 +73,19 @@ export default function Home() {
           </nav>
         </header>
 
-        {/* === HERO SECTION (Updated Text, Original Headline Size, Boxy Style) === */}
+        {/* === HERO SECTION (Updated Text & Formatting) === */}
         <section className="flex flex-col items-center justify-center py-24 text-center md:py-40">
           <div className="mb-8 h-2 w-full max-w-sm rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
-          {/* Headline updated - Kept original size */}
-          <h1 className="mb-6 text-5xl font-extrabold md:text-7xl">
-            printr runs on <span className="italic">tonr</span>
-            <br />
-            the natural beta runner
+          {/* Main Headline (Original Size) */}
+          <h1 className="mb-2 text-5xl font-extrabold md:text-7xl">
+            printr runs on <span className="italic">tonr</span>.
           </h1>
-          {/* Sub-headline updated */}
-          <div className="max-w-xl space-y-4 text-xl text-light-400 md:text-2xl">
+          {/* Subtitle (Smaller Size) */}
+          <p className="mb-8 text-2xl font-semibold text-light-200 md:text-3xl">
+            the natural beta runner
+          </p>
+          {/* Body Text */}
+          <div className="max-w-xl space-y-4 text-lg text-light-400 md:text-xl"> {/* Slightly smaller body text */}
               <p>
                   PRINTR is about to dethrone Pump.fun — not “maybe,” but inevitably.
               </p>
