@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 /* SVG Icon Components */
 const IconTwitter = ({ className = 'w-6 h-6' }: { className?: string }) => (
- <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 1.4 3 3.4 3 5.4 0 4.6-3.8 8.4-8.4 8.4H5.4C4.6 21.2 4 20.6 4 19.8v-.6c0-.2.1-.4.2-.5.2-.2.4-.3.6-.3h2.1c.3 0 .6-.1.8-.3.2-.2.3-.4.3-.7v-.2c-.2.1-.4.2-.7.2h-2c-1.3 0-2.4-1.1-2.4-2.4V9.6c0-1.3 1.1-2.4 2.4-2.4h7.8c.3 0 .6.1.8.3.2.2.3.4.3.7v.2c-.2-.1-.4-.2-.7-.2h-8c-1.3 0-2.4 1.1-2.4 2.4v7.8c0 1.3 1.1 2.4 2.4 2.4h2c.3 0 .6.1.8.3.2.2.3.4.3.7v.2c-.2-.1-.4-.2-.7-.2H5.4c-.8 0-1.4.6-1.4 1.4v.6c0 .8.6 1.4 1.4 1.4h8.2c4.1 0 7.4-3.3 7.4-7.4 0-2.3-1-4.3-2.6-5.8.6-.2 1.1-.5 1.6-1 1-.8 1.9-1.8 1.9-1.8Z" /></svg>
+ <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 1.4 3 3.4 3 5.4 0 4.6-3.8 8.4-8.4 8.4H5.4C4.6 21.2 4 20.6 4 19.8v-.6c0-.2.1-.4.2-.5.2-.2.4-.3.6-.3h2.1c.3 0 .6-.1.8-.3.2-.2.3-.4.3-.7v-.2c-.2.1-.4.2-.7.2h-2c-1.3 0-2.4-1.1-2.4-2.4V9.6c0-1.3 1.1-2.4 2.4-2.4h7.8c.3 0 .6.1.8-.3.2.2.3.4.3.7v.2c-.2-.1-.4-.2-.7-.2h-8c-1.3 0-2.4 1.1-2.4 2.4v7.8c0 1.3 1.1 2.4 2.4 2.4h2c.3 0 .6.1.8-.3.2.2.3.4.3.7v.2c-.2-.1-.4-.2-.7-.2H5.4c-.8 0-1.4.6-1.4 1.4v.6c0 .8.6 1.4 1.4 1.4h8.2c4.1 0 7.4-3.3 7.4-7.4 0-2.3-1-4.3-2.6-5.8.6-.2 1.1-.5 1.6-1 1-.8 1.9-1.8 1.9-1.8Z" /></svg>
 )
 const IconSend = ({ className = 'w-6 h-6' }: { className?: string }) => (
  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z" /><path d="m22 2-11 11" /></svg>
@@ -36,7 +36,7 @@ const GradientButton = ({ href, children, className = '', target = '_blank' }: {
 
 // === SECTION DIVIDER COMPONENT ===
 const SectionDivider = () => (
-    <hr className="my-16 md:my-24 border-t border-dark-900 max-w-4xl mx-auto" />
+    <hr className="border-t border-dark-900 max-w-4xl mx-auto" />
 )
 
 // === MAIN PAGE COMPONENT ===
@@ -70,7 +70,7 @@ export default function Home() {
           </nav>
         </header>
 
-        {/* === HERO SECTION === */}
+        {/* === HERO SECTION (Large Padding) === */}
         <section className="flex flex-col items-center justify-center py-24 text-center md:py-40">
           <div className="mb-8 h-2 w-full max-w-sm rounded bg-tonr-gradient bg-[length:200%_auto] animate-gradient-pulse" />
           <h1 className="mb-2 text-5xl font-extrabold md:text-7xl">
@@ -90,8 +90,8 @@ export default function Home() {
         {/* --- DIVIDER --- */}
         <SectionDivider />
 
-        {/* === TOKENOMICS SECTION === */}
-        <section className="mx-auto w-full max-w-4xl">
+        {/* === TOKENOMICS SECTION (Reduced Padding) === */}
+        <section className="mx-auto w-full max-w-4xl py-16"> {/* py-12 -> py-16 */}
           {/* Top 3 Boxes */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Total Supply</h3><p className="mt-2 text-3xl font-bold text-light-100">1,000,000,000</p></div></div>
@@ -108,8 +108,8 @@ export default function Home() {
         {/* --- DIVIDER --- */}
         <SectionDivider />
 
-        {/* === ABOUT SECTION (Expandable - Corrected Text) === */}
-        <section className="mx-auto w-full max-w-2xl text-center">
+        {/* === ABOUT SECTION (Expandable - Reduced Padding) === */}
+        <section className="mx-auto w-full max-w-2xl py-16 text-center"> {/* py-24 -> py-16 */}
           <h2 className="mb-4 text-2xl font-bold text-light-100">What is $TONR?</h2>
           {/* Brief Text */}
           <div className="space-y-4 text-lg text-light-400">
@@ -120,10 +120,7 @@ export default function Home() {
 
           {/* Read More Button */}
           {!isAboutExpanded && (
-            <button
-              onClick={() => setIsAboutExpanded(true)}
-              className="mt-6 inline-flex items-center gap-1 font-semibold text-tonr-cyan hover:text-opacity-80 transition"
-            >
+            <button onClick={() => setIsAboutExpanded(true)} className="mt-6 inline-flex items-center gap-1 font-semibold text-tonr-cyan hover:text-opacity-80 transition">
               Read More <span className="text-xl">→</span>
             </button>
           )}
@@ -138,13 +135,7 @@ export default function Home() {
               <p className="italic text-light-200">Not official. Inevitable.</p>
               <p>As liquidity and attention flood toward printr, the market will always circle back to the first print — the beta ink that started it all.</p>
               <p className="font-semibold text-light-100">printr runs on tonr.<br/>the natural beta runner.</p>
-              {/* NOTE: "Why $TONR Matters" text is REMOVED from here */}
-
-              {/* Read Less Button */}
-              <button
-                onClick={() => setIsAboutExpanded(false)}
-                className="mt-6 inline-flex items-center gap-1 font-semibold text-tonr-cyan hover:text-opacity-80 transition"
-              >
+              <button onClick={() => setIsAboutExpanded(false)} className="mt-6 inline-flex items-center gap-1 font-semibold text-tonr-cyan hover:text-opacity-80 transition">
                 Read Less <span className="text-xl">↑</span>
               </button>
             </div>
@@ -154,8 +145,8 @@ export default function Home() {
         {/* --- DIVIDER --- */}
         <SectionDivider />
 
-        {/* === NEW SECTION: WHY $TONR MATTERS === */}
-        <section className="mx-auto w-full max-w-2xl text-center">
+        {/* === NEW SECTION: WHY $TONR MATTERS (Reduced Padding) === */}
+        <section className="mx-auto w-full max-w-2xl py-16 text-center"> {/* py-24 -> py-16 */}
           <h2 className="mb-4 text-2xl font-bold text-light-100">Why $TONR Matters</h2>
           <div className="space-y-4 text-lg text-light-400">
               <p>Timing is everything. tonr showed up before the noise.</p>
@@ -168,12 +159,11 @@ export default function Home() {
 
         {/* --- DIVIDER --- */}
         {/* Placeholder for future sections like Vision, How to Buy, Meme Zone */}
-        {/* We will add content here later based on your SECTION 3, 4, 6 text */}
+        {/* We will add content here later */}
         <SectionDivider />
 
-
-        {/* === CTA SECTION === */}
-        <section className="flex w-full flex-col items-center justify-center gap-4 py-24 md:py-32">
+        {/* === CTA SECTION (Large Padding) === */}
+        <section className="flex w-full flex-col items-center justify-center gap-4 py-24 md:py-32"> {/* Kept larger padding */}
           <h3 className="text-3xl font-bold">Get your $TONR</h3>
           <p className="text-lg text-light-400">Join the community. Get the ink. Start printing.</p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
