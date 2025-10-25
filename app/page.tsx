@@ -92,11 +92,13 @@ export default function Home() {
 
         {/* === TOKENOMICS SECTION === */}
         <section className="mx-auto w-full max-w-4xl py-16">
+          {/* Top 3 Boxes */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Total Supply</h3><p className="mt-2 text-3xl font-bold text-light-100">1,000,000,000</p></div></div>
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Taxes</h3><p className="mt-2 text-3xl font-bold text-light-100">0% / 0%</p></div></div>
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6 text-center"><h3 className="text-sm font-semibold uppercase text-light-400">Liquidity</h3><p className="mt-2 text-3xl font-bold text-light-100">Locked</p></div></div>
           </div>
+          {/* Bottom 2 Address Boxes */}
           <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6"><h3 className="text-sm font-semibold uppercase text-light-400">EVM Address (Base, ETH, BNB)</h3><div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"><p className="truncate rounded-sm bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">0x...EVM...ADDRESS...HERE</p><div className="flex-none sm:ml-auto"><button onClick={() => handleCopy('evm', '0x...EVM...ADDRESS...HERE')} aria-pressed={copiedAddress === 'evm'} className={`relative grid place-items-center w-28 min-w-[7rem] max-w-[7rem] flex-none rounded bg-dark-900 px-4 py-2 font-semibold text-light-100 leading-none whitespace-nowrap transition hover:bg-opacity-75`}><span className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-out ${copiedAddress === 'evm' ? 'opacity-0' : 'opacity-100'}`}><IconCopy className="w-4 h-4 shrink-0" /> Copy</span><span aria-hidden={copiedAddress !== 'evm'} className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-in bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse ${copiedAddress === 'evm' ? 'opacity-100' : 'opacity-0'}`}><IconCheck className="w-4 h-4 shrink-0" /> Copied!</span></button></div></div></div></div>
             <div className="rounded bg-tonr-gradient p-[1.5px]"><div className="h-full w-full rounded-sm bg-dark-900 p-6"><h3 className="text-sm font-semibold uppercase text-light-400">Solana Address</h3><div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"><p className="truncate rounded-sm bg-dark-950 px-4 py-2 font-mono text-xs text-light-400 sm:flex-grow">So...SOLANA...ADDRESS...HERE</p><div className="flex-none sm:ml-auto"><button onClick={() => handleCopy('sol', 'So...SOLANA...ADDRESS...HERE')} aria-pressed={copiedAddress === 'sol'} className={`relative grid place-items-center w-28 min-w-[7rem] max-w-[7rem] flex-none rounded bg-dark-900 px-4 py-2 font-semibold text-light-100 leading-none whitespace-nowrap transition hover:bg-opacity-75`}><span className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-out ${copiedAddress === 'sol' ? 'opacity-0' : 'opacity-100'}`}><IconCopy className="w-4 h-4 shrink-0" /> Copy</span><span aria-hidden={copiedAddress !== 'sol'} className={`col-start-1 row-start-1 flex w-full items-center justify-center gap-2 transition-opacity duration-150 ease-in bg-tonr-gradient bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-pulse ${copiedAddress === 'sol' ? 'opacity-100' : 'opacity-0'}`}><IconCheck className="w-4 h-4 shrink-0" /> Copied!</span></button></div></div></div></div>
@@ -138,16 +140,23 @@ export default function Home() {
         {/* --- DIVIDER --- */}
         <SectionDivider />
 
-        {/* === NEW SECTION: WHY $TONR MATTERS (NEW Background & Padding) === */}
-        <section className="mx-auto w-full max-w-4xl py-16 rounded bg-dark-900 px-6 md:px-12"> {/* Added bg-dark-900, padding, max-w-4xl */}
-          <div className="max-w-2xl mx-auto text-center"> {/* Centered content */}
-            <h2 className="mb-4 text-2xl font-bold text-light-100">Why $TONR Matters</h2>
-            <div className="space-y-4 text-lg text-light-400">
-                <p>Timing is everything. tonr showed up before the noise.</p>
-                <p>The meta is shifting. Pump.fun ruled. Bonk.fun flashed. But printr changed the game — a true multi-chain meme factory ready to dethrone them all.</p>
-                <p>And when that happens (because in crypto it always does, fast), traders will look for the first token that made sense before it was obvious.</p>
-                <p className="font-semibold text-light-100">That’s $TONR — the origin stain, the culture ticker tied to the next liquidity wave.</p>
-                <p className="italic text-light-200">The machine needs its ink.<br/>The market remembers the first stain.</p>
+        {/* === NEW SECTION: WHY $TONR MATTERS (Gradient Border Added) === */}
+        <section className="mx-auto w-full max-w-4xl py-16"> {/* Removed text-center */}
+          {/* Added gradient border wrapper */}
+          <div className="rounded bg-tonr-gradient p-[1.5px]">
+            {/* Added dark background and padding */}
+            <div className="h-full w-full rounded-sm bg-dark-900 p-8 md:p-12">
+              {/* Centered content */}
+              <div className="max-w-2xl mx-auto text-center">
+                <h2 className="mb-4 text-2xl font-bold text-light-100">Why $TONR Matters</h2>
+                <div className="space-y-4 text-lg text-light-400">
+                    <p>Timing is everything. tonr showed up before the noise.</p>
+                    <p>The meta is shifting. Pump.fun ruled. Bonk.fun flashed. But printr changed the game — a true multi-chain meme factory ready to dethrone them all.</p>
+                    <p>And when that happens (because in crypto it always does, fast), traders will look for the first token that made sense before it was obvious.</p>
+                    <p className="font-semibold text-light-100">That’s $TONR — the origin stain, the culture ticker tied to the next liquidity wave.</p>
+                    <p className="italic text-light-200">The machine needs its ink.<br/>The market remembers the first stain.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
